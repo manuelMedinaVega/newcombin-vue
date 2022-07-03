@@ -1,15 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <RegistroUsuarios @nuevo="send" />
+  <ListaUsuarios :usuario="usuario" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import RegistroUsuarios from './components/RegistroUsuarios.vue'
+import ListaUsuarios from './components/ListaUsuarios.vue'
 export default {
   name: 'App',
+  mounted() {
+    console.log('app mounted')
+  },
   components: {
-    HelloWorld
+    RegistroUsuarios,
+    ListaUsuarios
+  },
+  data() {
+    return {
+      token: '',
+      usuario: {}
+    }
+  },
+  methods: {
+    send(data) {
+      this.usuario = data
+    }
   }
 }
 </script>
